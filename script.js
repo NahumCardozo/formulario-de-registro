@@ -48,12 +48,13 @@ const registro = async (event) => {
 
 const usuarioLogueado = () => {
     const emailActivo = localStorage.getItem("emailUsuario");
+    const ruta = window.location.pathname;
     
-    if (emailActivo && window.location.pathname.endsWith("index.html")) {
+    if (emailActivo && (ruta.endsWith("index.html") || ruta === "/")) {
         window.location.href = "bienvenida.html";
     }
 
-    if (!emailActivo && window.location.pathname.endsWith("bienvenida.html")) {
+    if (!emailActivo && ruta.endsWith("bienvenida.html")) {
         window.location.href = "index.html";
     }
 };
